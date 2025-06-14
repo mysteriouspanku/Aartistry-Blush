@@ -1,0 +1,36 @@
+.container-2 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .container-2 .card {
+    width: 400px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+
+  .container-2 .card:hover {
+    transform: scale(1.03);
+  }
+
+  
+  .site-logo {
+    max-width: 800px;
+    width: 100%;
+    height: auto;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.4s ease;
+    border-radius: 12px;
+    /* box-shadow: 0 0 20px rgba(255, 255, 255, 0.2); */
+  }
+  
+  .site-logo:hover {
+    transform: scale(1.05);
+    filter: brightness(1.2) saturate(1.5);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.5), 0 0 60px rgba(255, 105, 180, 0.5);
+  }

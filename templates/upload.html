@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+{% comment %} {% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+<style>
+  .upload-container {
+    max-width: 500px;
+    margin: 50px auto;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+  }
+  .form-label {
+    font-weight: 600;
+  }
+  .btn-custom {
+    background: #d16ba5;
+    border: none;
+    color: white;
+    font-weight: 500;
+  }
+  .btn-custom:hover {
+    background: #c777b9;
+  }
+</style>
+{% endblock %} 
+
+{% block x %}
+ <div class="upload-container">
+  <h3 class="text-center mb-4">Upload Your Art</h3>
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    
+    <div class="mb-3">
+      <label for="id_title" class="form-label">Title</label>
+      {{ form.title }}
+    </div>
+  
+    <div class="mb-3">
+      <label for="id_post_type" class="form-label">Post Category</label>
+      {{ form.post_type }}
+    </div>
+  
+    <div class="mb-3">
+      <label for="id_image" class="form-label">Upload Image</label>
+      {{ form.image }}
+    </div>
+  
+    <button type="submit" class="btn btn-danger">Post Now</button>
+  </form>
+
+</div> 
+
+
+{% endblock %} {% endcomment %}
+
+
+
+{% load static %}
+
+{% block css %}
+<style>
+  .upload-container {
+    max-width: 500px;
+    margin: 50px auto;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+  }
+  .form-label {
+    font-weight: 600;
+  }
+  .btn-custom {
+    background: #d16ba5;
+    border: none;
+    color: white;
+    font-weight: 500;
+  }
+  .btn-custom:hover {
+    background: #c777b9;
+  }
+</style>
+{% endblock %} 
+
+{% block x %}
+<div class="upload-container">
+  <h3 class="text-center mb-4">Upload Your Art</h3>
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    
+    <div class="mb-3">
+      <label for="id_title" class="form-label">Title</label>
+      {{ form.title }}
+    </div>
+  
+    <div class="mb-3">
+      <label for="id_post_type" class="form-label">Post Category</label>
+      {{ form.post_type }}
+    </div>
+
+    <div class="mb-3">
+      <label for="id_platform" class="form-label">Social Platform</label>
+      {{ form.platform }}
+    </div>
+
+    <div class="mb-3">
+      <label for="id_link" class="form-label">Redirect Link</label>
+      {{ form.link }}
+    </div>
+  
+    <div class="mb-3">
+      <label for="id_image" class="form-label">Upload Image</label>
+      {{ form.image }}
+    </div>
+    
+    <div class="mb-3">
+      <label class="form-label">Caption</label>
+      {{ form.caption }}
+    </div>
+
+    <button type="submit" class="btn btn-danger">Post Now</button>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+<style>
+  .img-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
+    overflow: visible; /* let icon float outside */
+    border-radius: 1rem 1rem 0 0;
+  }
+
+  .img-wrapper img {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+    border-radius: 1rem 1rem 0 0;
+  }
+
+  .hover-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 1rem;
+    background: #fff;
+    position: relative;
+    overflow: visible; /* make sure icon is not cut off */
+  }
+
+  .hover-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  }
+
+  .hover-card:hover .img-wrapper img {
+    transform: scale(1.05);
+  }
+
+  .card-title {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.3rem;
+  }
+
+  .card-subtext {
+    font-size: 0.85rem;
+    color: #888;
+  }
+
+  .social-icon-float {
+    position: absolute;
+    bottom: -22px;
+    right: 20px;
+    background-color: #ac2bac;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+    transform: translateY(50%);
+  }
+
+  .social-icon-float:hover {
+    transform: scale(1.1) translateY(50%);
+  }
+
+  .social-icon-float i {
+    color: #fff;
+  }
+
+  .social-icon-youtube {
+    background-color: red;
+  }
+</style>
+{% endblock %}
+
+{% block x %}
+<div class="container py-5">
+  <div class="row g-4 justify-content-center">
+    {% for post in posts %}
+      <div class="col-md-4">
+        <div class="card shadow-sm border-0 hover-card h-100">
+
+          <!-- Image Wrapper -->
+          <div class="img-wrapper">
+            <img src="{{ post.image.url }}" class="card-img-top" alt="{{ post.title }}" />
+            {% if post.link %}
+              <a href="{{ post.link }}" target="_blank"
+                 class="social-icon-float {% if post.platform == 'youtube' %}social-icon-youtube{% endif %}">
+                {% if post.platform == 'instagram' %}
+                  <i class="fab fa-instagram"></i>
+                {% elif post.platform == 'youtube' %}
+                  <i class="fab fa-youtube"></i>
+                {% endif %}
+              </a>
+            {% endif %}
+          </div>
+
+          <!-- Card Body -->
+          <div class="card-body text-center pt-4">
+            <h5 class="card-title">{{ post.title }}</h5>
+            <div class="card-subtext">{{ post.caption }}</div>
+          </div>
+
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,169 @@
+{% extends "base.html" %}
+{% load static %}
+{% block css %}<link rel="stylesheet" href="{% static 'style.css' %}">{% endblock %}
+{% comment %} {% block body_style %}style="background: {{ settings.background_gradient }}; font-family: {{ settings.font_family }};"{% endblock %} {% endcomment %}
+{% comment %} {% block body_style %}style="background: linear-gradient(90deg,rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%); font-family: {{ settings.font_family }};"{% endblock %} {% endcomment %}
+{%block x%}
+<div class="container mt-4" style="max-width: max;">
+  <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      {% for img in carousel_images %}
+      <div class="carousel-item {% if forloop.first %}active{% endif %}" data-bs-interval="2000">
+        <img src="{{ img.image.url }}" class="d-block w-100" alt="{{ img.alt_text }}">
+      </div>
+      {% endfor %}
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
+<div class="container-2">
+  <style>
+    .card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .overlay-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 1;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    .card:hover .overlay-img {
+      opacity: 0;
+    }
+
+    .bg-image {
+      position: relative;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      color: {{ settings.heading_color }} !important;
+    }
+
+    p {
+      color: {{ settings.text_color }} !important;
+    }
+  </style>
+
+  {% for card in cards %}
+  <div class="card">
+    <a href="{{ card.link }}">
+      <div class="bg-image hover-overlay" data-mdb-ripple-init data-mdb-ripple-color="light">
+        <img src="{{ card.image1.url }}" class="img-fluid" />
+        {% if card.image2 %}
+          <img src="{{ card.image2.url }}" class="img-fluid overlay-img" />
+        {% endif %}
+      </div>
+    </a>
+    <div class="card-body">
+      <h5 class="card-title">{{ card.title }}</h5>
+      <p class="card-text">{{ card.description }}</p>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+  {% comment %} <div  class="container-2">
+    <style>
+        .card {
+          position: relative;
+          overflow: hidden;
+        }
+      
+        .overlay-img {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          opacity: 1;
+          transition: opacity 0.5s ease-in-out;
+        }
+      
+        .card:hover .overlay-img {
+          opacity: 0;
+        }
+      
+        .bg-image {
+          position: relative;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+  color: {{ settings.heading_color }} !important;
+}
+         p{
+          color: {{ settings.text_color }} !important;
+         }
+      </style>
+      
+      <!-- Card 1: Nail Nirvana -->
+      <div class="card">
+        <a href="nailart">
+          <div class="bg-image hover-overlay" data-mdb-ripple-init data-mdb-ripple-color="light">
+            <img src="static/4.jpg" class="img-fluid" />
+            <img src="static/7.jpeg" class="img-fluid overlay-img" />
+          </div>
+        </a>
+        <div class="card-body">
+          <h5 class="card-title">Nail Nirvana</h5>
+          <p class="card-text">
+            Where Creativity Meets the Cuticle.<br />
+            From subtle strokes to bold patterns, nail art is more than just polish — it’s self-expression at your fingertips.
+          </p>
+        
+        </div>
+      </div>
+      
+      <!-- Card 2: Face Glaming -->
+      <div class="card">
+        <a href="makeup">
+          <div class="bg-image hover-overlay" data-mdb-ripple-init data-mdb-ripple-color="light">
+            <img src="static/5.jpg" class="img-fluid" />
+          </div>
+        </a>
+        <div class="card-body">
+          <h5 class="card-title">Face Glaming</h5>
+          <p class="card-text">
+            Whether it’s dewy skin, bold lips, or dreamy eyes, every look tells your story. Beauty begins the moment you decide to own it.
+          </p>
+        
+        </div>
+      </div>
+      
+      <!-- Card 3: Glow Check -->
+      <div class="card">
+        <a href="productReview">
+          <div class="bg-image hover-overlay" data-mdb-ripple-init data-mdb-ripple-color="light">
+            <img src="static/6.jpg" class="img-fluid" />
+            <img src="static/8.jpg" class="img-fluid overlay-img" />
+           
+          </div>
+        </a>
+        <div class="card-body">
+          <h5 class="card-title">Glow Check</h5>
+          <p class="card-text">
+            From foundations that actually last to lipsticks that slay all day, our reviews are raw, honest, and glow-obsessed.
+            No fluff, just facts—because your glam deserves the best.
+          </p>
+        </div>
+      </div>
+      
+  </div>
+</div> {% endcomment %}
+  {%endblock%}
+
+
+  

@@ -1,0 +1,22 @@
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+{% endblock %}
+
+{% block x %}
+<div class="text-center my-4">
+  <img src="{% static 'logo2.png' %}" alt="Aartistry Blush Logo" class="site-logo">
+</div>
+<div class="text-center my-4">
+<img src="static\Certificate.jpg"
+     alt="Certificate"
+     style="max-width: 50%; height: auto; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); transition: transform 0.3s ease-in-out;"
+     onmouseover="this.style.transform='scale(1.05)'"
+     onmouseout="this.style.transform='scale(1)'">
+</div>
+
+{% endblock %} 
+
